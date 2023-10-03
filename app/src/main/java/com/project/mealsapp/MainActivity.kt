@@ -13,11 +13,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getRetrofit()
         initUI()
     }
 
     private fun initUI() {
+
 
 //            .getMeal("chicken_breast")
 //           .meals
