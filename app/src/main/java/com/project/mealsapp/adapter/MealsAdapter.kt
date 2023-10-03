@@ -20,4 +20,9 @@ class MealsAdapter(private var mealsList: List<MealsData> = emptyList()) :
         holder.render(mealsList[position])
     }
 
+    fun updateList(list: List<MealsData>) {
+        mealsList = list
+        notifyDataSetChanged()
+    }
+
 }
