@@ -10,7 +10,7 @@ class MealsAdapter(private var mealsList: List<MealsData> = emptyList()) :
     RecyclerView.Adapter<MealsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealsViewHolder {
         return MealsViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_meal, parent)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_meal, parent,false)
         )
     }
 

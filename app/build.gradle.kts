@@ -55,4 +55,7 @@ dependencies {
 
     // coil
     implementation("io.coil-kt:coil:2.4.0")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 }

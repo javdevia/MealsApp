@@ -1,6 +1,7 @@
 package com.project.mealsapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
@@ -8,8 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.project.mealsapp.adapter.MealsAdapter
 import com.project.mealsapp.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -27,11 +28,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
+
         binding.svMeal.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun OnQueryTextSubmit(query: String? Boolean) {
+            override fun onQueryTextSubmit(query: String?): Boolean {
                 searchMeals(query.orEmpty())
                 return false
             }
+
+            override fun onQueryTextChange(newText: String?) = false
         })
 
         mealsAdapter = MealsAdapter()
@@ -49,12 +53,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun searchMeals(query: String) {
-        binding.progressBar.isVisible = true
-        CoroutineScope(Dispatcher.IO).launch {
-            val response = retrofit
-                .create(MealsService::class.java)
-                .getMeals(query)
 
+        binding.progressBar.isVisible = true
+        CoroutineScope(Dispatchers.IO).launch {
+            val myResponse = retrofit.create(MealsService::class.java).getMeals(query)
+            val response = myResponse.body()
             if (response != null) {
                 runOnUiThread {
                     mealsAdapter.updateList(response.info)
@@ -62,6 +65,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 }
