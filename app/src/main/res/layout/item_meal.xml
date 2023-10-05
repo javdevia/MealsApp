@@ -7,8 +7,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/layoutMeal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
         android:layout_margin="8dp"
         android:padding="8dp"
         app:cardCornerRadius="8dp">
@@ -20,22 +20,25 @@
 
             <TextView
                 android:id="@+id/tvMeal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
                 android:layout_marginVertical="8dp"
+                android:gravity="center"
                 android:textAllCaps="true"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/ivMeal"
                 tools:text="Nombre de la receta" />
 
             <ImageView
                 android:id="@+id/ivMeal"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvMeal"
