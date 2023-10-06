@@ -27,10 +27,10 @@
                 android:textAllCaps="true"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/ivMeal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/ivMeal"
                 tools:text="Nombre de la receta" />
 
             <ImageView
@@ -43,6 +43,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvMeal"
                 tools:background="@color/black" />
+
+            <ImageView
+                android:id="@+id/ivFavorite"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_favorite"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/red" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

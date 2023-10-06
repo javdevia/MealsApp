@@ -31,11 +31,6 @@ class MainActivity : AppCompatActivity() {
     private fun initUI() {
 
 
-        mealsAdapter = MealsAdapter()
-        binding.rvMeals.setHasFixedSize(true)
-        binding.rvMeals.layoutManager = GridLayoutManager(this, 2)
-        binding.rvMeals.adapter = mealsAdapter
-
         binding.svMeal.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
@@ -47,7 +42,8 @@ class MainActivity : AppCompatActivity() {
                         mealsViewModel.state.collect {
                             when (it) {
                                 is MealsState.Error -> {
-                                    Toast.makeText(this@MainActivity,it.error,Toast.LENGTH_LONG).show()
+                                    Toast.makeText(this@MainActivity, it.error, Toast.LENGTH_LONG)
+                                        .show()
                                     binding.progressBar.isVisible = false
                                 }
 
@@ -58,17 +54,19 @@ class MainActivity : AppCompatActivity() {
                                 is MealsState.Success -> {
                                     binding.progressBar.isVisible = false
                                     mealsAdapter.updateList(it.mealsData.body()!!.info)
-
                                 }
                             }
                         }
                     }
                 }
-
                 return false
             }
 
             override fun onQueryTextChange(newText: String?) = false
         })
+        mealsAdapter = MealsAdapter()
+        binding.rvMeals.setHasFixedSize(true)
+        binding.rvMeals.layoutManager = GridLayoutManager(this, 2)
+        binding.rvMeals.adapter = mealsAdapter
     }
 }

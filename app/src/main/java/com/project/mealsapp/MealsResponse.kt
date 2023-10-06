@@ -10,4 +10,5 @@ data class MealsData(
     @SerializedName("strMeal") val name: String,
     @SerializedName("strMealThumb") val image: String,
     @SerializedName("idMeal") val id: String,
+    var favorite: Boolean = false,
 )
